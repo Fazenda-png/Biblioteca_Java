@@ -12,8 +12,3 @@ spring:
     hibernate:
       ddl-auto: update
       dialect: org.hibernate.dialect.MySQLDialect
-  flyway:
-    url: jdbc:mysql://localhost:3306
-    schemas: api_library
-    user: root
-    password: admin123
