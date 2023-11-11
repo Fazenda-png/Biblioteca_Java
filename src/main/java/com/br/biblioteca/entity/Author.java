@@ -10,6 +10,7 @@ import java.util.UUID;
 public class Author {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String nome;
     private String informacoes_autor;

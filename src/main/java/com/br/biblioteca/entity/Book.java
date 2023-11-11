@@ -1,5 +1,6 @@
 package com.br.biblioteca.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -10,12 +11,14 @@ import java.util.UUID;
 public class Book {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String nome;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date data_lancamento;
     private String resumo;
     private String foto;
-    private Boolean reservado;
+    private Boolean reservado = Boolean.FALSE;
     @ManyToOne
     @JoinColumn(name = "colecao_id")
     private Collection colecao;
@@ -29,13 +32,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(UUID id, String nome, Date data_lancamento, String resumo, String foto, Boolean reservado) {
-        this.id = id;
+    public Book(String nome, Date data_lancamento, String resumo, String foto) {
         this.nome = nome;
         this.data_lancamento = data_lancamento;
         this.resumo = resumo;
         this.foto = foto;
-        this.reservado = reservado;
     }
 
     public UUID getId() {
